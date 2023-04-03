@@ -1,0 +1,10 @@
+﻿Source.obj : error LNK2019: unresolved external symbol sqlite3_close referenced in function main
+Source.obj : error LNK2019: unresolved external symbol sqlite3_open referenced in function main
+Source.obj : error LNK2019: unresolved external symbol sqlite3_errmsg referenced in function main
+Source.obj : error LNK2019: unresolved external symbol sqlite3_prepare_v2 referenced in function main
+Source.obj : error LNK2019: unresolved external symbol sqlite3_step referenced in function main
+Source.obj : error LNK2019: unresolved external symbol sqlite3_column_int referenced in function main
+Source.obj : error LNK2019: unresolved external symbol sqlite3_column_text referenced in function main
+Source.obj : error LNK2019: unresolved external symbol sqlite3_finalize referenced in function main
+B:\RollingStone\RollingStone\sqlite3.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+B:\RollingStone\x64\Debug\RollingStone.exe : fatal error LNK1120: 8 unresolved externals
