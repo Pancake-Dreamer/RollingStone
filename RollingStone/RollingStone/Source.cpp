@@ -23,7 +23,7 @@ int main() {
     }
 
     sqlite3_stmt* stmt;
-    rc = sqlite3_prepare_v2(db, "SELECT * FROM Album ORDER BY AlbumRank DESC;", -1, &stmt, NULL);
+    rc = sqlite3_prepare_v2(db, "SELECT AlbumRank, AlbumTitle, ArtistName FROM Album INNER JOIN Artist ON Album.ArtistID = Artist.ArtistID ORDER BY AlbumRank DESC", -1, &stmt, NULL);
     if (rc != SQLITE_OK) {
         std::cerr << "Error preparing statement: " << sqlite3_errmsg(db) << std::endl;
         sqlite3_close(db);
@@ -31,10 +31,11 @@ int main() {
     }
 
     while (sqlite3_step(stmt) == SQLITE_ROW) {
-        int id = sqlite3_column_int(stmt, 0);
+        int rank = sqlite3_column_int(stmt, 0);
         std::string title = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
-        int rank = sqlite3_column_int(stmt, 2);
-        std::cout << id << ". " << title << " ( #" << rank << ")" << std::endl;
+        //int rank = sqlite3_column_int(stmt, 1);
+        std::string artist = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2));
+        std::cout << "#" << rank << ". " << title << " by " << artist << std::endl;
     }
 
     sqlite3_finalize(stmt);
